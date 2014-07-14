@@ -2545,6 +2545,13 @@ static int transcode_init(void)
                     ost->frame_aspect_ratio.num ? // overridden by the -aspect cli option
                     av_mul_q(ost->frame_aspect_ratio, (AVRational){ codec->height, codec->width }) :
                     ost->filter->filter->inputs[0]->sample_aspect_ratio;
+                if (!strncmp(ost->enc->name, "libmfxhw", 8) &&
+                    codec->pix_fmt == AV_PIX_FMT_NONE &&
+                    ost->filter->filter->inputs[0]->format != AV_PIX_FMT_YUV420P)
+                    av_log(NULL, AV_LOG_WARNING,
+                           "No pixel format specified, %s for H.264 encoding chosen.\n"
+                           "Use -pix_fmt yuv420p for compatibility with outdated media players.\n",
+                           av_get_pix_fmt_name(ost->filter->filter->inputs[0]->format));
                 if (!strncmp(ost->enc->name, "libx264", 7) &&
                     codec->pix_fmt == AV_PIX_FMT_NONE &&
                     ost->filter->filter->inputs[0]->format != AV_PIX_FMT_YUV420P)

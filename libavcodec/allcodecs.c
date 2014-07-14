@@ -514,6 +514,7 @@ void avcodec_register_all(void)
     REGISTER_ENCDEC (LIBVPX_VP9,        libvpx_vp9);
     REGISTER_ENCODER(LIBWAVPACK,        libwavpack);
     REGISTER_ENCODER(LIBWEBP,           libwebp);
+    REGISTER_ENCODER(LIBMFXHW,          libmfxhw);
     REGISTER_ENCODER(LIBX264,           libx264);
     REGISTER_ENCODER(LIBX264RGB,        libx264rgb);
     REGISTER_ENCODER(LIBX265,           libx265);
