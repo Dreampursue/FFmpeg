@@ -792,7 +792,7 @@ static const AVCodecDefault x264_defaults[] = {
     { NULL },
 };
 
-AVCodec ff_libx264_encoder = {
+AVCodec ff_libmfxhw_encoder = {
     .name             = "libmfxhw",
     .long_name        = NULL_IF_CONFIG_SMALL("libmfxhw H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"),
     .type             = AVMEDIA_TYPE_VIDEO,
